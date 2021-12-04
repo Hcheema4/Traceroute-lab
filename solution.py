@@ -131,21 +131,21 @@ def get_route(hostname):
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here
-                    print(" %d rtt=%.0f ms %s %(ttl,(timeReceived -t) * 1000, addr[0]))
+                    print(" %d rtt=%.0f ms %s" %(ttl,(timeReceived -t) * 1000, addr[0]))
                     #Fill in end
                 elif types == 3:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here 
-                    print(" %d rtt=%.0f ms %s %(ttl,(timeReceived -t) * 1000, addr[0]))
+                    print(" %d rtt=%.0f ms %s" %(ttl,(timeReceived -t) * 1000, addr[0]))
                     #Fill in end
                 elif types == 0:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here and return your list if your destination IP is met
-                    print(" %d rtt=%.0f ms %s %(ttl,(timeReceived -t) * 1000, addr[0]))
+                    print(" %d rtt=%.0f ms %s" %(ttl,(timeReceived -t) * 1000, addr[0]))
                     return
                     #Fill in end
                 else:
