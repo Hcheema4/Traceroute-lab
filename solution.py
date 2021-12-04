@@ -114,16 +114,16 @@ def get_route(hostname):
 
             else:
                 #Fill in start
-                header = recvPacket[20:28] #Fetch the icmp type from the IP packet
-                icmp_type, icmp_code, icmp_packetID, icmp_sequence = struct.unpack("bbHHh", header)
+                icmp_header = recvPacket[20:28] #Fetch the icmp type from the IP packet
+                icmp_type, icmp_code, icmp_packetID, icmp_sequence = struct.unpack("bbHHh", icmp_header)
                 #Fill in end
-                try: #try to fetch the hostname
+               # try: #try to fetch the hostname
                     #Fill in start
-                    tracelist1.append(gethostbyaddr(str(addr[0]))[0]) 
+                #    tracelist1.append(gethostbyaddr(str(addr[0]))[0]) 
                     #Fill in end
-                except herror:   #if the host does not provide a hostname
+               # except herror:   #if the host does not provide a hostname
                     #Fill in start
-                    tracelist1.append("No hostname found")
+                #    tracelist1.append("No hostname found") 
                     #Fill in end
 
                 if types == 11:
@@ -145,7 +145,7 @@ def get_route(hostname):
                     #timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here and return your list if your destination IP is met
-                    print(" %d rtt=%.0f ms %s" %(ttl,(timeReceived -t) * 1000, addr[0]))
+                    print(" %d rtt=%.0f ms %s" %(ttl,(timeReceived - timeSent) * 1000, addr[0]))
                     return
                     #Fill in end
                 else:
