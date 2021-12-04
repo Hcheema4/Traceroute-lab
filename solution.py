@@ -130,27 +130,23 @@ def get_route(hostname):
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
-                    tracelist1.insert (-1, str(int((timeReceived - t) * 1000)) + "ms")#You should add your responses to your lists here
-                    tracelist1.insert(-1, addr[0])
-                    tracelist2.append(tracelist1)
+                    #You should add your responses to your lists here
+                    print(" %d rtt=%.0f ms %s %(ttl,(timeReceived -t) * 1000, addr[0]))
                     #Fill in end
                 elif types == 3:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here 
-                    tracelist1.insert(-1, str(int((timeReceived - t) *1000)) + "ms")
-                    tracelist1.insert(-1, addr[0])
-                    tracelist2.append(tracelist1) 
+                    print(" %d rtt=%.0f ms %s %(ttl,(timeReceived -t) * 1000, addr[0]))
                     #Fill in end
                 elif types == 0:
                     bytes = struct.calcsize("d")
                     timeSent = struct.unpack("d", recvPacket[28:28 + bytes])[0]
                     #Fill in start
                     #You should add your responses to your lists here and return your list if your destination IP is met
-                    tracelist1.insert(-1, str(int((timeReceived - t) *1000)) + "ms")
-                    tracelist1.insert(-1, addr[0])
-                    tracelist2.append(tracelist1)
+                    print(" %d rtt=%.0f ms %s %(ttl,(timeReceived -t) * 1000, addr[0]))
+                    return
                     #Fill in end
                 else:
                     #Fill in start
@@ -160,5 +156,5 @@ def get_route(hostname):
                 break
             finally:
                 mySocket.close()
-        print(" ".join(tracelist1))
-    return (tracelist2)
+        #print(" ".join(tracelist1))
+    get_route("google.com")
